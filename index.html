@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    
+    <title>Width-Dependent Page Size</title>
+    
+    <link rel="stylesheet" href="./normalize.min.css" />
+    <style type="text/css">
+      html {
+        font-size: 32px;
+        text-align: center;
+      }
+      section {
+        margin: 0 auto;
+        padding: 0.5rem;
+      }
+      div {
+        display: inline-block;
+        margin: 0 1rem;
+      }
+    </style>
+    
+    <script src="./jquery.slim.min.js"></script>
+    <script>
+      $(function(){ // on DOM loaded
+        update();
+        $(window).resize(function() {
+          update();
+        });
+      });
+      function update(){
+        var Size = $(window).width()/50+"px";
+        $("html").css("font-size", Size);
+        $("#Width").text( $(window).width()+"px" );
+        $("#Height").text( $(window).height()+"px" );
+        $("#Size").text( Size );
+      }
+    </script>
+  </head>
+  
+  <body>
+    
+    <h1>Width-Dependent Page Size</h1>
+    <p>This webpage's contents will scale uniformly based on the inside width of the browser window.  This'll probably be most useful for normalizing the appearance of a webpage across larger screen sizes.  Screens with fewer pixels?  Not so much.</p>
+    
+    <section id="Calc" style="background:#eeeeee;width:90%;">
+      <div style="background:#ff9999;height:4rem;width:12rem">Current width: <span id="Width"></span></div>
+      <div style="background:#99ff99;height:8rem;width:5rem">Current height: <span id="Height"></span></div>
+      <div style="background:#ffff99;height:6rem;width:6rem">Font-size: <span id="Size"></span></div>
+    </section>
+    
+  </body>
+</html>
